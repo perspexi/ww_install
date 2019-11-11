@@ -1724,12 +1724,12 @@ sub get_webwork {
       get_webwork2_repo(WEBWORK2_REPO);   #WEBWORK2_REPO constant defined at top
     ## change so it gets the 2.13 version
     ## my $ww2_cmd = [$apps->{git},'clone',$ww2_repo];
-    my $ww2_cmd = [$apps->{git},'clone -b WeBWorK-2.13.1 --single-branch',$ww2_repo];
+    my $ww2_cmd = [$apps->{git},'clone',$ww2_repo,'-b','WeBWorK-2.13.1','--single-branch'];
 
     my $pg_repo = get_pg_repo(PG_REPO);    #PG_REPO constant defined at top
     ## change so it gets the 2.13 version
     ## my $pg_cmd = [$apps->{git},'clone',$pg_repo];
-    my $pg_cmd = [$apps->{git},'clone -b PG-2.13 --single-branch',$pg_repo];
+    my $pg_cmd = [$apps->{git},'clone',$pg_repo,'-b','PG-2.13','--single-branch'];
 
     my $opl_repo = get_opl_repo(OPL_REPO);    #OPL_REPO constant defined at top
     my $opl_cmd = [$apps->{git},'clone',$opl_repo];
