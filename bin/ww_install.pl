@@ -66,7 +66,10 @@ use constant IPC_CMD_VERBOSE => 1;    #Controls whether all output of a command
 #
 ###################################################################
 
+# change from lastest repo to 2.13 repo
 use constant WEBWORK2_REPO => 'https://github.com/openwebwork/webwork2.git';
+#use constant WEBWORK2_REPO => 'https://github.com/openwebwork/webwork2/tree/WeBWorK-2.13.1.git';
+
 use constant PG_REPO       => 'https://github.com/openwebwork/pg.git';
 use constant OPL_REPO =>
   'https://github.com/openwebwork/webwork-open-problem-library.git';
@@ -1719,10 +1722,14 @@ sub get_webwork {
     chdir $prefix or die "Can't chdir to $prefix";
     my $ww2_repo =
       get_webwork2_repo(WEBWORK2_REPO);   #WEBWORK2_REPO constant defined at top
-    my $ww2_cmd = [$apps->{git},'clone',$ww2_repo];
+    ## change so it gets the 2.13 version
+    ## my $ww2_cmd = [$apps->{git},'clone',$ww2_repo];
+    my $ww2_cmd = [$apps->{git},'clone -b WeBWorK-2.13.1 --single-branch',$ww2_repo];
 
     my $pg_repo = get_pg_repo(PG_REPO);    #PG_REPO constant defined at top
-    my $pg_cmd = [$apps->{git},'clone',$pg_repo];
+    ## change so it gets the 2.13 version
+    ## my $pg_cmd = [$apps->{git},'clone',$pg_repo];
+    my $pg_cmd = [$apps->{git},'clone -b PG-2.13 --single-branch',$pg_repo];
 
     my $opl_repo = get_opl_repo(OPL_REPO);    #OPL_REPO constant defined at top
     my $opl_cmd = [$apps->{git},'clone',$opl_repo];
