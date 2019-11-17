@@ -66,9 +66,7 @@ use constant IPC_CMD_VERBOSE => 1;    #Controls whether all output of a command
 #
 ###################################################################
 
-# change from lastest repo to 2.13 repo
 use constant WEBWORK2_REPO => 'https://github.com/openwebwork/webwork2.git';
-#use constant WEBWORK2_REPO => 'https://github.com/openwebwork/webwork2/tree/WeBWorK-2.13.1.git';
 
 use constant PG_REPO       => 'https://github.com/openwebwork/pg.git';
 use constant OPL_REPO =>
@@ -1806,7 +1804,9 @@ sub get_MathJax {
     #command: system("git submodule update --init");
     #my $cmd = [ $full_path, 'submodule', "update", "--init" ];
 
-    my $cmd = [ $full_path, 'clone', MATHJAX_REPO];
+    #my $cmd = [ $full_path, 'clone', MATHJAX_REPO];
+    my $cmd = [ $full_path, 'clone', MATHJAX_REPO,'-b','legacy-v2','--single-branch'];
+    
     my $success = run_command($cmd);
     if ($success) {
         print_and_log("Downloaded MathJax to $WW_PREFIX/MathJax\n");
